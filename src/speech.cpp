@@ -1,8 +1,10 @@
-﻿#include "speech.h"
+﻿#include "speechmanager.h"
 #include <iostream>
 using namespace std;
 speechmanager::speechmanager() // 不能加分号
 {
+    this->init_speech();
+    this->create_speaker();
 }
 void speechmanager::show_menu()
 {
@@ -22,4 +24,30 @@ void speechmanager::exit_system()
 
 speechmanager::~speechmanager()
 {
+}
+void speechmanager::init_speech() {
+    this->pre_speaker.clear();
+    this->final_speaker.clear();
+    this->win_speaker.clear();
+    this->m_speaker.clear();
+
+    this->m_index = 1;
+};
+void speechmanager::create_speaker()
+{
+    string nameseed = "ABCDEFGHIJKL";
+    for (int i = 0; i < nameseed.size();i++)
+    {
+        string name = "选手";
+        name += nameseed[i];
+        speaker sp;
+        sp.m_name = name;
+        for (int j = 0; j < 2;j++)
+        {
+            sp.m_score[j] = 0;
+        }
+        this->pre_speaker.push_back(100001 + i);
+        this->m_speaker.insert(std::make_pair(100001 + i, sp));
+        this->m_index++;
+    }
 }

@@ -1,10 +1,18 @@
 ﻿#include <iostream>
-#include "speech.h"
+#include "speechmanager.h"
+#include "speaker.h"
 using namespace std;
 int main()
 {
     // 设置演讲管理类
     speechmanager sm;
+    /*用于测试是否有正确创建选手，输出选手编号和姓名
+    for(map<int,speaker>::iterator it = sm.m_speaker.begin(); it != sm.m_speaker.end(); it++)
+    {
+        cout << "选手编号： " << it->first << " 选手姓名： " << it->second.m_name << endl;
+    }
+    */
+
     // 调用菜单函数
     int choice = 0;
     while (true)
@@ -34,4 +42,4 @@ int main()
         }
     }
 
-} // namespace std;
+} 
