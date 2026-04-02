@@ -1,6 +1,6 @@
 # CMake 构建目录
-build/
-lib/
+/build
+/lib/Debug
 
 # 可执行文件与调试文件
 *.exe
