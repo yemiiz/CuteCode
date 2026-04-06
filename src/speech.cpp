@@ -56,7 +56,7 @@ void speechmanager::create_speaker()
         }
         this->pre_speaker.push_back(100001 + i);
         this->m_speaker.insert(std::make_pair(100001 + i, sp));
-        this->m_index++;
+        //this->m_index++;  这我tm什么时候加的  又是AI自动补全
     }
 }
 
@@ -117,6 +117,10 @@ void speechmanager::speech_contest() {
 
     cout << "第" << this->m_index << "轮比赛正在进行中..." << endl;
 
+    multimap<double, int, greater<int>> groupscore;
+
+    int num = 0;    // 记录比赛人数
+
     vector<int> v;
     if(this->m_index == 1)      //这里的this可以省略，因为没有同名成员变量，编译器不会混淆
     {
@@ -131,10 +135,11 @@ void speechmanager::speech_contest() {
     {
         //评委打分
         deque<double> d;
+        num++;
         for (int i = 0; i < 10;i++)
         {
             double score = (rand() % 401 + 600) / 10.f;
-            cout << score << " ";
+            //cout << score << " ";   打印每个评委的分数，测试用
             d.push_back(score);
 
         }
@@ -147,5 +152,38 @@ void speechmanager::speech_contest() {
         double avg = sum / (d.size() * 1.0); // 求平均分
         this->m_speaker[*it].m_score[this->m_index - 1] = avg; // 将平均分存储到选手的score数组中
         
+        groupscore.insert(make_pair(avg, *it)); // 将平均分和选手编号存储到multimap中，自动排序
+        if(num%6 == 0)
+        {
+            cout << "第" << num/6  << "组比赛名次：" << endl;
+            for(auto it : groupscore)
+            {
+                cout << "选手编号： " << it.second << " 选手姓名： " << this->m_speaker[it.second].m_name << " 平均分： " << it.first << endl;
+            }
+
+            //根据平均分从大到小排序，选出前3名晋级
+            for(multimap<double,int,greater<int>>::iterator it = groupscore.begin(); it != groupscore.end(); it++)
+            {
+                if(this->m_index == 1)
+                {
+                    if(this->final_speaker.size() < 3)
+                    {
+                        this->final_speaker.push_back(it->second);
+                    }
+                }
+                else
+                {
+                    if(this->win_speaker.size() < 3)
+                    {
+                        this->win_speaker.push_back(it->second);
+                    }
+                }
+            }
+            groupscore.clear(); // 清空multimap，准备下一组比赛
+            system("pause");
+        }
     }    
+
+    cout << "------------第" << this->m_index << "轮比赛结束！------------" << endl;
+    system("pause");
 };
