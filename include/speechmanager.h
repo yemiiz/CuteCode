@@ -32,6 +32,8 @@ public:
     void speech_draw();
     //比赛
     void speech_contest();
+    //展示成绩
+    void show_score();
     // 析构函数
     ~speechmanager();
 };
