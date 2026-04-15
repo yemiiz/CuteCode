@@ -1,7 +1,0 @@
-# ninja log v6
-5	362	7977615431023062	CMakeFiles/speech_app.dir/src/main.cpp.obj	61ae9213804bd9e2
-29	496	7977615431263870	CMakeFiles/speech_app.dir/src/speech.cpp.obj	263ea81925c1e4df
-497	1208	7977615435940889	C:/Users/HP/Desktop/program/VSCODE/speeches/lib/speech_app.exe	d6095dfbee5fe228
-8	475	7977616643864394	CMakeFiles/speech_app.dir/src/speech.cpp.obj	263ea81925c1e4df
-476	915	7977616648542209	C:/Users/HP/Desktop/program/VSCODE/speeches/lib/speech_app.exe	d6095dfbee5fe228
-8	471	7977618890733384	CMakeFiles/speech_app.dir/src/speech.cpp.obj	263ea81925c1e4df

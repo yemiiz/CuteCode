@@ -1,3 +1,0 @@
-C:/Users/HP/Desktop/program/VSCODE/speeches/build/CMakeFiles/speech_app.dir
-C:/Users/HP/Desktop/program/VSCODE/speeches/build/CMakeFiles/edit_cache.dir
-C:/Users/HP/Desktop/program/VSCODE/speeches/build/CMakeFiles/rebuild_cache.dir
