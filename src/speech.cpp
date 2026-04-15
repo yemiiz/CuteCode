@@ -170,20 +170,21 @@ void speechmanager::speech_contest()
             {
                 cout << "选手编号： " << it.second << " 选手姓名： " << this->m_speaker[it.second].m_name << " 平均分： " << it.first << endl;
             }
-
+            int cnt = 0;
             // 根据平均分从大到小排序，选出前3名晋级
             for (multimap<double, int, greater<double>>::iterator it = groupscore.begin(); it != groupscore.end(); it++)    
             {
                 if (this->m_index == 1)
                 {
-                    if (this->final_speaker.size() < 6) // 第一轮晋级6人
+                    if (cnt < 3) // 第一轮晋级3人
                     {
                         this->final_speaker.push_back(it->second);
+                        cnt++;
                     }
                 }
                 else
                 {
-                    if (this->win_speaker.size() < 3)
+                    if (cnt < 3)
                     {
                         this->win_speaker.push_back(it->second);
                     }
