@@ -91,6 +91,7 @@ void speechmanager::speech_draw()
 void speechmanager::start_speech()
 {
     // 第一轮
+    this->m_index = 1;  
     // 1.抽签
     this->speech_draw();
     // 2.比赛
@@ -118,7 +119,7 @@ void speechmanager::speech_contest()
 
     cout << "第" << this->m_index << "轮比赛正在进行中..." << endl;
 
-    multimap<double, int, greater<int>> groupscore;
+    multimap<double, int, greater<int>> groupscore;     
 
     int num = 0; // 记录比赛人数
 
@@ -166,7 +167,7 @@ void speechmanager::speech_contest()
             {
                 if (this->m_index == 1)
                 {
-                    if (this->final_speaker.size() < 3)
+                    if (this->final_speaker.size() < 6) // 第一轮晋级6人
                     {
                         this->final_speaker.push_back(it->second);
                     }
