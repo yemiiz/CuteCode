@@ -230,3 +230,36 @@ void speechmanager::save_score() {
     ofs <<endl;
     ofs.close();
 };
+
+void speechmanager::load_record() {
+    ifstream ifs("speech.csv", ios::in);
+    //1.文件不存在情况
+    if(!ifs.is_open())
+    {
+        this->fileisempty = true;
+        cout << "文件不存在" << endl;
+        ifs.close();
+        return;
+    }
+
+    //2.文件为空情况
+    char ch;
+    ifs >> ch;
+    if(ifs.eof())
+    {
+        cout << "文件为空" << endl;
+        this->fileisempty = true;
+        ifs.close();
+        return;
+    }
+
+    //3.文件不为空
+    this->fileisempty = false;
+    ifs.putback(ch);
+    string data;
+    while(ifs >> data)
+    {
+        cout << data << endl;
+    }
+    ifs.close();
+};

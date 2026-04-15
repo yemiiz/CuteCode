@@ -42,8 +42,15 @@ public:
     //展示成绩
     void show_score();
     void show_victor();
+
     //保存成绩
     void save_score();
+    //读取记录
+    void load_record();
+    //判断文件是否为空
+    bool fileisempty;
+
+    map<int,vector<string>> m_record; // 记录往届比赛的成绩
     // 析构函数
     ~speechmanager();
 };

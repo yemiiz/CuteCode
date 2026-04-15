@@ -32,6 +32,7 @@ int main()
             break;
         case 2:
             // 处理查看往届记录的逻辑
+            sm.load_record();
             break;
         case 3:
             // 处理清空比赛记录的逻辑
