@@ -55,6 +55,7 @@ public:
     bool fileisempty;
 
     map<int,std::vector<string>> m_record;// 记录往届比赛的成绩
+    void clear_record();
     // 析构函数
     ~speechmanager();
 };

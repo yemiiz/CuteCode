@@ -176,7 +176,7 @@ void speechmanager::speech_contest()
             {
                 if (this->m_index == 1)
                 {
-                    if (cnt < 3) // 第一轮晋级3人
+                    if (cnt < 3) // 第一轮晋级6人,每组比赛前3名晋级，cnt记录已经晋级的人数，当cnt达到3时，停止晋级
                     {
                         this->final_speaker.push_back(it->second);
                         cnt++;
@@ -184,7 +184,7 @@ void speechmanager::speech_contest()
                 }
                 else
                 {
-                    if (cnt < 3)
+                    if (win_speaker.size() < 3) // 第二轮晋级3人
                     {
                         this->win_speaker.push_back(it->second);
                     }
@@ -300,5 +300,24 @@ void speechmanager::load_record() {
         cout << "亚军编号： " << it->second[2] << " 亚军分数： " << it->second[3] << endl;
         cout << "季军编号： " << it->second[4] << " 季军分数： " << it->second[5] << endl;
         cout << "---------------------------------------------" << endl;
+    }
+};
+
+void speechmanager::clear_record() {
+    cout << "您确定要清空比赛记录吗？(y/n)" << endl;
+    char choice;
+    cin >> choice;
+    if (choice == 'y' || choice == 'Y')
+    {
+        ofstream ofs("speech.csv", ios::trunc); // 用截断方式打开文件，清空文件内容
+        ofs.close();
+        this->m_record.clear(); // 同时清空内存中的记录
+        this->fileisempty = true;
+        this->create_speaker(); // 重新创建选手，准备下一轮比赛
+        cout << "比赛记录已清空！" << endl;
+    }
+    else
+    {
+        cout << "取消清空比赛记录！" << endl;
     }
 };

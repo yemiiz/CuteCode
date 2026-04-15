@@ -36,6 +36,7 @@ int main()
             break;
         case 3:
             // 处理清空比赛记录的逻辑
+            sm.clear_record();
             break;
         case 0:
             sm.exit_system(); // 处理退出比赛系统的逻辑
