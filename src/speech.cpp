@@ -124,7 +124,7 @@ void speechmanager::speech_contest()
 
     cout << "第" << this->m_index << "轮比赛正在进行中..." << endl;
 
-    multimap<double, int, greater<int>> groupscore;     
+    multimap<double, int, greater<double>> groupscore;     
 
     int num = 0; // 记录比赛人数
 
@@ -252,7 +252,7 @@ void speechmanager::load_record() {
     ifs >> ch;
     if(ifs.eof())
     {
-        cout << "文件为空" << endl;
+        cout << "没有比赛记录" << endl;
         this->fileisempty = true;
         ifs.close();
         return;
@@ -262,10 +262,11 @@ void speechmanager::load_record() {
     this->fileisempty = false;
     ifs.putback(ch);
     string data;
+    int round = 1;
+
     while(ifs >> data)
     {
         vector<string> v;
-        int round = 1;
         int pos = -1;
         int start = 0;
 
@@ -285,4 +286,14 @@ void speechmanager::load_record() {
         round++; // 新增：每读取一行，轮次加一
     }
     ifs.close();
+
+    for(map<int,vector<string>>::iterator it = this->m_record.begin(); it != this->m_record.end(); it++)
+    {
+        cout << "第" << it->first << "届比赛的前三名选手编号和分数如下：" << endl;
+        cout << "---------------------------------------------" << endl;
+        cout << "冠军编号： " << it->second[0] << " 冠军分数： " << it->second[1] << endl;
+        cout << "亚军编号： " << it->second[2] << " 亚军分数： " << it->second[3] << endl;
+        cout << "季军编号： " << it->second[4] << " 季军分数： " << it->second[5] << endl;
+        cout << "---------------------------------------------" << endl;
+    }
 };
